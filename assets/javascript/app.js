@@ -23,13 +23,23 @@ firebase.initializeApp(config);
 //dataBase reference
 let dbRef = firebase.database();//variable needed to create 'folder' for each med selection
 
-
+function spellChecker(med) {
+  let spellQuery = "https://cors-anywhere.herokuapp.com/https://chemspell.nlm.nih.gov/spell/restspell/restSpell/getQuery4JSON?query=" + med
+  $.ajax({
+    url: spellQuery,
+    method: "GET"
+  }).then(function (response) {
+    console.log(response)
+    var spell = response;
+    console.log(JSON.stringify(spell));
+  })
+}
 
 // AJAX queries
 function userSelection(med) {
   let FDAQuery = "https://api.fda.gov/drug/label.json?search=" + med; //Will need a variable in place
   //let FDAQuery = "https://api.fda.gov/drug/label.json?search=prozac"; //Will need a variable in place
-  medDB = dbRef.ref('med/'+ med);//variable needed to create 'folder' for each med selection
+  medDB = dbRef.ref('med/' + med);//variable needed to create 'folder' for each med selection
 
   $.ajax({
     url: FDAQuery,
