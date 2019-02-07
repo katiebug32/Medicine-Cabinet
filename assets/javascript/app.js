@@ -71,10 +71,6 @@ function spellChecker(med) {
 function FDA(med) {
   //Query for FDA API.
   let FDAQuery = "https://api.fda.gov/drug/label.json?search=" + med; //Will need a variable in place
-
-
-
-
   $.ajax({
     url: FDAQuery,
     method: "GET"
@@ -82,15 +78,7 @@ function FDA(med) {
 
     console.log("This is the full response from FDA: ", response);//<---checking info from API
 
-
-    //var medDB = dbRef.push()
-    medDB.set({
-      adverse_reactions: response.results[0].adverse_reactions,
-      boxed_warning: response.results[0].boxed_warning
-    });
-
   });
-
 };
 //#############################################################################################
 // End of API/AJAX queries
