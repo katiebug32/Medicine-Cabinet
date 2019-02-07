@@ -22,7 +22,7 @@ firebase.initializeApp(config);
 //Global variables
 //dataBase reference
 let dbRef = firebase.database();//variable needed to create 'folder' for each med selection
-
+let response;//vairiable to llow us to play with FDA api response
 
 
 
@@ -42,12 +42,12 @@ function spellChecker(med) {
   $.ajax({
     url: spellQuery,
     method: "GET"
-  }).then(function (response) {
+  }).then(function (res) {
 
-    console.log("This is the response form chemSpell: ", response)//<---checking info from API
+    console.log("This is the response form chemSpell: ", res)//<---checking info from API
 
     //TODO: Turn our response into an array and split it from the '"'
-    spell = response.split('"');
+    spell = res.split('"');
 
     //TODO: review all of our elements with a loop
     for (let i = 0; i < spell.length; i++) {
@@ -74,10 +74,11 @@ function FDA(med) {
   $.ajax({
     url: FDAQuery,
     method: "GET"
-  }).then(function (response) {
+  }).then(function (res) {
 
-    console.log("This is the full response from FDA: ", response);//<---checking info from API
-
+    console.log("This is the full response from FDA: ", res);//<---checking info from API
+    //assign the data to global variable. to be able to display on dom without saveing to database
+    response = res;
   });
 };
 //#############################################################################################
@@ -85,13 +86,38 @@ function FDA(med) {
 //#############################################################################################
 
 
-//Will need to creat an addBtn function to pass user selection into the data base below
-//variable needed to create 'folder' for each med selection
-medDB = dbRef.ref('med/' + med);
-//Save data to folder with .set()
-medDB.set({
-  //KEY:VALUE,
-  //KEY:VALUE,
-  //KEY:VALUE
-})
+
+//#############################################################################################
+// start Functions to manipulate the database
+//#############################################################################################
+
+//TODO: The addME function needs to be part of an (addButton).on.('click',
+//med  =  'this' data attribute on a button
+//removeMed(med)
+//}
+function addMed(med) {
+  
+  medDB = dbRef.ref('med/' + med);
+  //Save data to folder with .set()
+  medDB.set({
+    medinfo: response,
+    //KEY:VALUE,
+    //KEY:VALUE
+  });
+};
+
+//TODO: The removeMed function needs to be part of an (removeButton).on.('click',
+//med  =  'this' data attribute on a button
+//removeMed(med)
+//}
+function removeMed(med) {
+
+  //Target your specific medication with med variable
+  medDB = dbRef.ref('med/' + med);
+  medDB.remove();
+};
+
+//#############################################################################################
+// End Functions to maniipulate the database
+//#############################################################################################
 
