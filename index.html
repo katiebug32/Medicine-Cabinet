@@ -7,6 +7,7 @@
     <title>My Medicine Cabinet</title>
     <meta name="description" content="You choose what goes in your cabinet. We utilze multiple APIs to get the information you need." />
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/stlyes/style.css" />
 </head>
@@ -37,15 +38,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
     <!--############################################-->
     <!--You form, cabinet, and other info needed. Maybe a table or some divs-->
     <!--############################################-->
@@ -54,23 +46,53 @@
             <div class="col s3">
                 <!-- Grey navigation panel -->
                 <ul id="slide-out" class="sidenav sidenav-fixed">
-                <nav>
+                    <nav>
                         <div class="nav-wrapper">
                             <a href="#" class="brand-logo"></a>
                             <form>
-                                    <div class="input-field">
-                                        <input id="search" type="search" required>
-                                        <label class="label-icon" for="search"><i class="material-icons">Search</i></label>
-                                        <i class="material-icons">X</i>
-                                    </div>
-                                </form>
-                                <p>Here is some information about stuff. Perhaps this is where the search results will display? Until then, I'll fill this space with some words about life and stuff and things. Have a great day!</p>
-
+                                <div class="input-field">
+                                    <input id="search" type="search" required>
+                                    <label class="label-icon" for="search"><i class="material-icons">Search</i></label>
+                                    <i class="material-icons">X</i>
+                                </div>
+                            </form>
+                            <p>Here is some information about stuff. Perhaps this is where the search results will display? Until then, I'll fill this space with some words about life and stuff and things. Have a great day!</p>
                         </div>
                     </nav>
-                    
                 </ul>
                 <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            </div>
+                <section>
+            <div class="row">
+                <div class="col-md-10">
+                    <div class="card mb-4">
+                        <div class="card-header">Add a medication</div>
+                        <div class="card-body">
+              
+                          <form>
+                            <div class="form-group">
+                              <label for="train-name-input">Medication Name</label>
+                              <input class="form-control" id="medication-name-input" placeholder="" type="text">
+                            </div>
+                            <div class="form-group">
+                              <label for="destination-input">Start Date</label>
+                              <input class="form-control" id="start-date-input" placeholder="" type="text">
+                            </div>
+                            <div class="form-group">
+                              <label for="time-input">End Date</label>
+                              <input class="form-control" id="end-date-input" placeholder="" type="text">
+                            </div>
+                            <div class="form-group">
+                              <label for="frequency-input">Additional Comments</label>
+                              <input class="form-control" id="comments-input" placeholder="" type="text">
+                            </div>
+                            <button class="btn btn-primary float-right" id="add-medication-btn">Submit</button>
+                          </form>
+              
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 
             </div>
 
@@ -132,12 +154,14 @@
 
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="assets/javascript/app.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 
 </html>
