@@ -69,7 +69,7 @@
      <!-- DISPLAYS THE FIREBASE DATA / USER INPUT -->
         <div id="medicationTableDiv"> 
         <div class="divider"></div>
-            <table class="striped responsive-table">
+            <table class="striped responsive-table z-depth-3">
             <thead>
                 <tr>
                     <th>Medication: </th>
@@ -105,10 +105,10 @@
     </div>
     
     <!-- SEARCH FOR MEDICATIONS HERE -->
-    <div class="container" id="searchDiv">
+    <div class="container z-depth-3" id="searchDiv">
         <form class="s9 m9 l6" id="med-search">
             <div class="input-field grey lighten-4">
-                <input id="search" type="search" required>
+                <input id="medSearch" type="search" required>
                 <label class="label-icon" for="search"><i class="material-icons">search for a medication...</i></label>
                 <i class="material-icons" id="search-icon">X</i>
             </div>
@@ -125,6 +125,9 @@
             <ul class="spelling">
 
             </ul>
+            <div id="fdaInfo">
+                
+            </div>
         </div>
     </div>
 </section>   
@@ -140,7 +143,7 @@
                             <textarea id="textarea1" class="materialize-textarea"></textarea>
                             <label for="textarea1">Medication:</label>
                         </div> -->
-                    </div>
+                    <!-- </div> -->
                     <p>Add to your Medicine Cabinet:</p>
                 <div class="row">
                     <div class="input-field">
