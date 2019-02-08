@@ -60,7 +60,7 @@ function spellChecker(med) {
 
         //TODO: Will need to pass this result  into a button or list creater function 
         //to populate DOM with correct spelling for user to select 
-
+        medSpellingList(el)
       };
     };
   });
@@ -96,7 +96,7 @@ function FDA(med) {
 //removeMed(med)
 //}
 function addMed(med) {
-  
+
   medDB = dbRef.ref('med/' + med);
   //Save data to folder with .set()
   medDB.set({
@@ -123,14 +123,14 @@ function removeMed(med) {
 
 
 //TODO: ENTER will be the search for the med. i dont see a submit button
-$('#med-search').submit( e => {
+$('#med-search').submit(e => {
   e.preventDefault();
-  
-  
-  let med = document.getElementById("search").value 
-  
+
+
+  let med = document.getElementById("search").value
+
   console.log('This is your meds ' + med)
-  
+
   //pass med to the spell checker
   spellChecker(med)
 
@@ -140,6 +140,13 @@ $('#med-search').submit( e => {
 
 
 //TODO: Create list items as they words are passed through from the spellchecker
-function medSpellingList(words){
+function medSpellingList(words) {
+  let ul = $('.spelling')
+  
+    let li = $('<li>', { 'class': 'med-li btn col s6 z-depth-1', 'data-name': words })
+    ul.append(li.text(words))
   
   console.log(words + " in the medSpellingList");//<---checking to see if i am in this function
+}
+
+

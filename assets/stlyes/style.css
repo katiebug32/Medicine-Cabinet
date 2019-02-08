@@ -20,6 +20,12 @@ footer {
     bottom:0;
     width: 100%;
 }
+li.med-li.btn.col.s6 {
+    margin: 5px;
+}
+.row .col.s6 {
+    width: 47%;
+}
 
 @media screen and (max-width: 542px){
     #headerText {
