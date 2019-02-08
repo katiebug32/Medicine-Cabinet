@@ -7,72 +7,153 @@
     <title>My Medicine Cabinet</title>
     <meta name="description" content="You choose what goes in your cabinet. We utilze multiple APIs to get the information you need." />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-     <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/stlyes/style.css" />
 </head>
 
 <body>
-
-    <!--############################################-->
-    <!--Top header, maybe a nav bar or image-->
-    <!--############################################-->
     <header>
-        <!--What goes in here?-->
-
-
-
+        <nav>
+            <div class="nav-wrapper">
+                    <a href="#" class="brand-logo center" id="headerText"><span class="fas fa-file-prescription"></span>Medicine Cabinet</a>
+            </div>
+        </nav>
     </header>
+    <div class="container" id="mainDisplayContainer">
+            <div class="divider"></div>
+            <div class="section">
 
-
-
-
-    <!--############################################-->
-    <!--You form, cabinet, and other info needed. Maybe a table or some divs-->
-    <!--############################################-->
-    <main>
-        <section>
-            <div class="row">
-                <div class="col-md-10">
-                    <div class="card mb-4">
-                        <div class="card-header">Add a medication</div>
-                        <div class="card-body">
-              
-                          <form>
-                            <div class="form-group">
-                              <label for="train-name-input">Medication Name</label>
-                              <input class="form-control" id="medication-name-input" placeholder="" type="text">
-                            </div>
-                            <div class="form-group">
-                              <label for="destination-input">Start Date</label>
-                              <input class="form-control" id="start-date-input" placeholder="" type="text">
-                            </div>
-                            <div class="form-group">
-                              <label for="time-input">End Date</label>
-                              <input class="form-control" id="end-date-input" placeholder="" type="text">
-                            </div>
-                            <div class="form-group">
-                              <label for="frequency-input">Additional Comments</label>
-                              <input class="form-control" id="comments-input" placeholder="" type="text">
-                            </div>
-                            <button class="btn btn-primary float-right" id="add-medication-btn">Submit</button>
-                          </form>
-              
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+        <!-- ////////Need to add following code to .js file!
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.collapsible');
+            var instances = M.Collapsible.init(elems, options);
+          });
         
+          // Or with jQuery
+        
+          $(document).ready(function(){
+            $('.collapsible').collapsible();
+          });
+        //////////////         --> 
+                <!-- <ul class="collapsible">
+                    <li>
+                        <div class="collapsible-header">Welcome to the Medicine Cabinet</div>
+                        <div class="collapsible-body">
+                            <p>You can use this application to:</p>
+                            <li>- Get information about prescription or over-the-counter (OTC) medications.</li>
+                            <li>- Store information about your favorite medications or current prescriptions for quick reference.</li>
+                        </div>
+                    </li> 
+                </ul> -->
+            </div>
+    <!-- </div> -->
+            <!-- <div class="divider"></div>
+            <div class="section" id="searchDiv">
+                <div class="nav-wrapper">
+                    <form class="s6 m6 l6">
+                    <div class="input-field">
+                        <input id="search" type="search" required>
+                        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                        <i class="material-icons">X</i>
+                    </div>
+                    </form>
+                </div>
+                <div class="divider"></div>
+            </div> -->
 
 
-        </section>
-        <section></section>
-        <section></section>
-    </main>
+     <!-- DISPLAYS THE FIREBASE DATA / USER INPUT -->
+        <div id="medicationTableDiv"> 
+        <div class="divider"></div>
+            <table class="striped responsive-table">
+            <thead>
+                <tr>
+                    <th>Medication: </th>
+                    <th>Prescription Started:</th>
+                    <th>Prescription Ending:</th>
+                    <th>Dosage / Notes: </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Azithromycin</td>
+                    <td>02/01/19</td>
+                    <td>02/06/19</td>
+                    <td>Take 2x daily with food</td>
+                </tr>
+                <tr>
+                    <td>Lipitor</td>
+                    <td>01/01/18</td>
+                    <td>01/01/50</td>
+                    <td>1x daily PM</td>
+                </tr>
+                <tr>
+                    <td>AMOXICILLIN</td>
+                    <td>02/10/19</td>
+                    <td>02/24/19</td>
+                    <td>Take 2x daily with food</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+        <div class="divider"></div> 
+        <br>
+    </div>
+    
+    <!-- SEARCH FOR MEDICATIONS HERE -->
+    <div class="container" id="searchDiv">
+            <form class="s9 m9 l6">
+                <div class="input-field grey lighten-4">
+                    <input id="search" type="search" required>
+                    <label class="label-icon" for="search"><i class="material-icons">search for a medication...</i></label>
+                    <i class="material-icons">X</i>
+                </div>
+            </form>
+        </div>
+       
+    </div>
+    
+    <br>    
+
+    <!-- INPUT FORMS FOR PRESCRIPTIONS HERE -- 
+    SHOULD ONLY DISPLAY THIS CONTAINER ON CLICK EVENT TO ADD TO MED CAB -->
+    <div class="container" id="infoFormDiv">
+            <div class="divider"></div>
+            <div class="row">
+                <form class="s6 m6 l6" id="addMedicineForm">
+                    <!-- <div class="row">
+                        <div class="input-field">
+                            <textarea id="textarea1" class="materialize-textarea"></textarea>
+                            <label for="textarea1">Medication:</label>
+                        </div> -->
+                    </div>
+                    <p>Add to your Medicine Cabinet:</p>
+                <div class="row">
+                    <div class="input-field">
+                        <textarea id="textarea1" class="materialize-textarea"></textarea>
+                        <label for="textarea1">Prescription Start Date:</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field">
+                        <textarea id="textarea1" class="materialize-textarea"></textarea>
+                        <label for="textarea1">Prescription End Date:</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field">
+                        <textarea id="textarea1" class="materialize-textarea"></textarea>
+                        <label for="textarea1">Notes (Dosage / Other):</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+</div>
+  
 
 
 
@@ -81,15 +162,24 @@
     <!--############################################-->
     <!--The footer with our git hub links :) -->
     <!--############################################-->
-    <footer>
+
+<footer class="page-footer">
+    <div class="footer-copyright">
+            <div class="container">
+            © 2019 Team Baratheon
+            <a class="grey-text text-lighten-4 right" href="#!"></a>
+            </div>
+    </div>
+</footer>
 
 
-    </footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
 
-
-    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="assets/javascript/app.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="assets/javascript/app.js"></script>
 
 </body>
 
