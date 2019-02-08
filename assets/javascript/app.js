@@ -48,6 +48,7 @@ function spellChecker(med) {
 
     //TODO: Turn our response into an array and split it from the '"'
     spell = res.split('"');
+    console.log(spell);
 
     //TODO: review all of our elements with a loop
     for (let i = 0; i < spell.length; i++) {
@@ -78,7 +79,27 @@ function FDA(med) {
 
     console.log("This is the full response from FDA: ", res);//<---checking info from API
     //assign the data to global variable. to be able to display on dom without saveing to database
-    response = res;
+   console.log(res.results[0]);
+   if(res.results[0].hasOwnProperty("indications_and_usage")) {
+    response = res.results[0].indications_and_usage;
+    $('#fdaInfo').text(response);
+    return;
+    }
+    else if(res.results[0].hasOwnProperty("general_precautions")){
+      response = res.results[0].general_precautions;
+      $('#fdaInfo').text(response);
+      return;
+    } 
+    else if(res.results[0].hasOwnProperty("warnings")){
+      response = res.results[0].warnings;
+      $('#fdaInfo').text(response);
+      return;
+    }
+    else{
+      $('#fdaInfo').text("No Information Currently Available");
+    }
+  // response = res;
+  // $('#fdaInfo').text(response);
   });
 };
 //#############################################################################################
@@ -122,20 +143,30 @@ function removeMed(med) {
 //#############################################################################################
 
 
+// Or with jQuery
+
+
 //TODO: ENTER will be the search for the med. i dont see a submit button
 $('#med-search').submit(e => {
   e.preventDefault();
 
 
-  let med = document.getElementById("search").value
+  let med = document.getElementById("medSearch").value
 
   console.log('This is your meds ' + med)
 
   //pass med to the spell checker
-  spellChecker(med)
+  spellChecker(med);
 
   //reset serach form
-  document.getElementById("med-search").reset()
+  document.getElementById("med-search").reset();
+})
+
+$(".spelling").on("click", ".med-li", function(){
+  let med = $(this).attr("data-name");
+  console.log(med);
+  $('.spelling').empty();
+  FDA(med);
 })
 
 
