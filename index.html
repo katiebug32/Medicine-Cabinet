@@ -104,18 +104,28 @@
     
     <!-- SEARCH FOR MEDICATIONS HERE -->
     <div class="container" id="searchDiv">
-            <form class="s9 m9 l6">
-                <div class="input-field grey lighten-4">
-                    <input id="search" type="search" required>
-                    <label class="label-icon" for="search"><i class="material-icons">search for a medication...</i></label>
-                    <i class="material-icons">X</i>
-                </div>
-            </form>
-        </div>
-       
+        <form class="s9 m9 l6" id="med-search">
+            <div class="input-field grey lighten-4">
+                <input id="search" type="search" required>
+                <label class="label-icon" for="search"><i class="material-icons">search for a medication...</i></label>
+                <i class="material-icons" id="search-icon">X</i>
+            </div>
+        </form>
     </div>
-    
-    <br>    
+   
+</div>
+
+<br>  
+<!--Need to populate the spell checker results-->  
+<section class="container">
+    <div class="row">
+        <div class="z-depth-3"><p class="center"> IS THIS WHERE THE CORRECT SPELLING WOULD GO?</p>
+            <ul class="spelling">
+
+            </ul>
+        </div>
+    </div>
+</section>   
 
     <!-- INPUT FORMS FOR PRESCRIPTIONS HERE -- 
     SHOULD ONLY DISPLAY THIS CONTAINER ON CLICK EVENT TO ADD TO MED CAB -->

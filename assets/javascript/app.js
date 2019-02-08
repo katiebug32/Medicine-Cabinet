@@ -121,3 +121,25 @@ function removeMed(med) {
 // End Functions to maniipulate the database
 //#############################################################################################
 
+
+//TODO: ENTER will be the search for the med. i dont see a submit button
+$('#med-search').submit( e => {
+  e.preventDefault();
+  
+  
+  let med = document.getElementById("search").value 
+  
+  console.log('This is your meds ' + med)
+  
+  //pass med to the spell checker
+  spellChecker(med)
+
+  //reset serach form
+  document.getElementById("med-search").reset()
+})
+
+
+//TODO: Create list items as they words are passed through from the spellchecker
+function medSpellingList(words){
+  
+  console.log(words + " in the medSpellingList");//<---checking to see if i am in this function
