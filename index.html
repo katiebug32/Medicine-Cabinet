@@ -65,6 +65,31 @@
                 <div class="divider"></div>
             </div> -->
 
+            <!-- MATERIALIZE MODAL POPUP EXAMPLE -->
+            <div class="section" style="border:0px solid red;">
+
+                    <!-- Modal Trigger w/button -->
+                   <!-- <button data-target="modal1" class="btn modal-trigger">Modal Test Button</button> -->
+
+                    <!-- Modal Trigger w/hyperlink -->
+                    <a class="btn modal-trigger" href="#modal1">Modal Test Hyperlink</a> 
+
+                    <!-- Modal Structure -->
+                    <div id="modal1" class="modal">
+
+                        <div class="modal-content">
+                            <h4>Modal Header</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sodales augue sed tempus ultricies. Integer id ligula ex. Vestibulum id iaculis nisl, at cursus nisl. Proin at dapibus felis. Nulla varius ultrices suscipit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nisl arcu, bibendum at consequat eu, efficitur ac nisi.</p>
+                        </div>
+
+                        <div class="modal-footer">
+                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                        </div>
+
+                    </div>
+
+            </div>
+
 
      <!-- DISPLAYS THE FIREBASE DATA / USER INPUT -->
         <div id="medicationTableDiv"> 
@@ -187,14 +212,22 @@
     </div>
 </footer>
 
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- this is a duplicate reference to jquery!!! 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
 <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+<!-- moved materialize down so it loads AFTER jquery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="assets/javascript/app.js"></script>
+
+ <!-- MATERIALIZE MODAL SCRIPT -->
+ <script>
+      $(document).ready(function(){
+          //alert("document is ready for jquery...");
+          $(".modal").modal();
+      });
+</script>
 
 </body>
 
