@@ -11,8 +11,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/stlyes/style.css" />
-
-   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 </head>
 
@@ -132,18 +131,28 @@
     
     <!-- SEARCH FOR MEDICATIONS HERE -->
     <div class="container" id="searchDiv">
-            <form class="s9 m9 l6">
-                <div class="input-field grey lighten-4">
-                    <input id="search" type="search" required>
-                    <label class="label-icon" for="search"><i class="material-icons">search for a medication...</i></label>
-                    <i class="material-icons">X</i>
-                </div>
-            </form>
-        </div>
-       
+        <form class="s9 m9 l6" id="med-search">
+            <div class="input-field grey lighten-4">
+                <input id="search" type="search" required>
+                <label class="label-icon" for="search"><i class="material-icons">search for a medication...</i></label>
+                <i class="material-icons" id="search-icon">X</i>
+            </div>
+        </form>
     </div>
-    
-    <br>    
+   
+</div>
+
+<br>  
+<!--Need to populate the spell checker results-->  
+<section class="container">
+    <div class="row">
+        <div class="z-depth-3"><p class="center"> IS THIS WHERE THE CORRECT SPELLING WOULD GO?</p>
+            <ul class="spelling">
+
+            </ul>
+        </div>
+    </div>
+</section>   
 
     <!-- INPUT FORMS FOR PRESCRIPTIONS HERE -- 
     SHOULD ONLY DISPLAY THIS CONTAINER ON CLICK EVENT TO ADD TO MED CAB -->
@@ -204,7 +213,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
 <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
 <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
 <!-- moved materialize down so it loads AFTER jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="assets/javascript/app.js"></script>
