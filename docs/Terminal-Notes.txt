@@ -1,0 +1,121 @@
+REFERENCE
+===================================================
+Mac OS Terminal Commands (type "exit" to quit)
+===================================================
+ls = all content in directory
+cd .. = back one
+cd ~ = back to root
+cd music = navigate into music
+pwd = print working directory
+mkdir = make directory
+touch = make file
+rm = remove file
+rm -r sharky = recursively remove directory
+man = manual (q = get out of manual)
+cp = copy (~/Desktop) 
+mv = move what where
+open = open file (open . = open directory)
+
+Show Hidden Files
+defaults write com.apple.finder AppleShowAllFiles 1 && killall Finder
+
+Hide Hidden Files
+defaults write com.apple.finder AppleShowAllFiles NO && killall Finder
+===================================================
+Local Git Repository (GitHub Pages)
+===================================================
+cd ~ = "/Users/mikecastillo" (Home Directory) 
+cd ~/Desktop
+cd ~/Documents
+cd ~/Documents/UT\ CODING\ BOOTCAMP/
+
+1. cd documents/UT\ CODING\ BOOTCAMP/UTAUS201811FSF5/
+2. git pull
+===================================================
+
+git pull origin master
+
+git checkout -b feature-name (create new) OR git checkout feature-name
+
+git push origin feature-name
+
+create pull request in git
+
+===========================================================================
+Git Commands (untracked > modified [not staged/staged] > commit > push/pull)
+===========================================================================
+1. keep master branch on local computer so it matches remote repo
+2. make a new branch off of master to mess with, make pull request then merge into master
+
+git --version = “2.17.2 (Apple Git-113)”
+git help config
+git config —list
+git config user.name
+git config user.email
+git init (new repository)
+git clone <URL>
+git checkout branch (mike)
+git status (view untracked and staged)
+git log (view commits)
+rm -rf .git (remove repository leaving only the working directory)
+git reflog (shows all recent “hashes” like undo)
+git remote show origin <--shows details about remote repo
+git remote -v (must be inside your repo)
+git checkout -b update-readme (now in 'update-readme' branch)
+git branch (tells you what branches you have, '*' tells you which one you are on)
+//use master branch as clean copy
+vi README.md (vi = vim editor)
+git status
+git diff (shows me changes i have made)
+git add .
+git status (shows staged)
+touch new-file.html
+vi new-file.html
+git status
+git diff (no difference)
+git add . ('.' adds everything)
+git status (all staged, not committed)
+git log
+git commit -m "update readme and add new file"
+git log (has been added locally)
+git reflog (show you everything you did if you are stuck)
+git remote (tells us we are on origin)
+git push origin update-readme (push to branch instead)
+//put all features in branches so you don't mess up master
+//create pull request
+//review (if applicable)
+//merge pull request
+//still need to pull to update local copy
+git pull origin master
+cat readme.md
+
+git merge --abort
+git reset --hard 'hash'
+git reset --soft 'hash'
+
+git config --global core.excludesfile ~/.gitignore
+echo .DS_Store >> ~/.gitignore
+
+===== ADD (MOVES FILES THROUGH VARIOUS STAGES UNTIL COMMIT) =========
+
+git add -a or file name
+git add test.html (stage the file for commit to local repository)
+git add TEST (stage the directory and contents to local repo)
+
+===== COMMIT (MAKES FILES READY TO PUSH) =========
+
+git commit -m “my message” test.html (commit staged files)
+git reset assets/.DS_Store (remove commit and modify file)
+not providing -m will take you to Vim. Pres "esc" and then ":q" to get out. (or :wq to commit)
+
+===== PUSH/PULL TO/FROM REMOTE REPOSITORY =========
+git push origin <your-branch> (push local changes to GitHub)
+git push origin master
+git pull
+===================================================
+Node.js
+===================================================
+get into node.js in terminal... type "node"
+get out of node.js in terminal... type ".exit"
+navigate to directory where your file exists then type "node yourfile.js" to run it
+
