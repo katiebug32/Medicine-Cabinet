@@ -138,13 +138,12 @@ function addMed(med, startDate, endDate, notes) {
   console.log("testing addMed function: ", med, startDate, endDate, notes);
   medDB = dbRef.ref('med/' + med);
   //Save data to folder with .set()
-  medDB.push({
+  medDB.set({
     med: med,
     startDate: startDate,
     endDate: endDate,
     notes: notes
   });
-
 };
 
 //TODO: The removeMed function needs to be part of an (removeButton).on.('click',
@@ -161,8 +160,31 @@ function removeMed(med) {
 // End Functions to maniipulate the database
 //#############################################################################################
 
+//#############################################################################################
+// Begin Functions to read and display database / table 
+//#############################################################################################
 
-// Or with jQuery
+dbRef.ref("/med").on("value", function (snapshot) {
+  console.log(snapshot.val());
+  renderMedTable(snapshot); 
+}, function (error) {
+  console.log("error", error);
+});
+
+function renderMedTable(snapshot) {
+  $("tbody").empty();
+  snapshot.forEach(function (childSnapshot) {
+      var childData = childSnapshot.val(); // values currently in firebase
+      console.log("childDate: ", childData);
+      $("tbody").append("<tr><td>" + childData.med +  "</td><td>" + 
+      childData.startDate + "</td><td>" + 
+      childData.endDate + "</td><td>" + 
+      childData.notes + "</td>"); 
+  });
+}
+//#############################################################################################
+// End Functions to read and display database / table 
+//#############################################################################################
 
 
 //TODO: ENTER will be the search for the med. i dont see a submit button
@@ -210,5 +232,5 @@ function medSpellingList(words) {
 
   console.log(words + " in the medSpellingList");//<---checking to see if i am in this function
 }
-
+ 
 
