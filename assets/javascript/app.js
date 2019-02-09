@@ -82,21 +82,26 @@ function FDA(med) {
    console.log(res.results[0]);
    if(res.results[0].hasOwnProperty("indications_and_usage")) {
     response = res.results[0].indications_and_usage;
-    $('#fdaInfo').text(response);
+    $('#fdaInfo').text("Indications and Usage: " + response);
+    $("#medDisplayName").text(med).attr("class", "flow-text center");
+    addModalTrigger();
     return;
     }
     else if(res.results[0].hasOwnProperty("general_precautions")){
       response = res.results[0].general_precautions;
       $('#fdaInfo').text(response);
+      addModalTrigger();
       return;
     } 
     else if(res.results[0].hasOwnProperty("warnings")){
       response = res.results[0].warnings;
       $('#fdaInfo').text(response);
+      addModalTrigger();
       return;
     }
     else{
       $('#fdaInfo').text("No Information Currently Available");
+      addModalTrigger();
     }
   // response = res;
   // $('#fdaInfo').text(response);
@@ -116,6 +121,10 @@ function FDA(med) {
 //med  =  'this' data attribute on a button
 //removeMed(med)
 //}
+function addModalTrigger(){
+  $("#fdaInfo").append('<a class="right btn-small modal-trigger" href="#modal1">Add To Medicine Cabinet</a>') 
+}
+
 function addMed(med) {
 
   medDB = dbRef.ref('med/' + med);
@@ -154,6 +163,8 @@ $('#med-search').submit(e => {
   let med = document.getElementById("medSearch").value
 
   console.log('This is your meds ' + med)
+  $('#fdaInfo').empty();
+  $('#medDisplayName').empty();
 
   //pass med to the spell checker
   spellChecker(med);
@@ -162,6 +173,7 @@ $('#med-search').submit(e => {
   document.getElementById("med-search").reset();
 })
 
+//on click of a correctly spelled medication from button list//
 $(".spelling").on("click", ".med-li", function(){
   let med = $(this).attr("data-name");
   console.log(med);
