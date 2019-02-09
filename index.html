@@ -72,18 +72,43 @@
                    <!-- <button data-target="modal1" class="btn modal-trigger">Modal Test Button</button> -->
 
                     <!-- Modal Trigger w/hyperlink -->
-                    <a class="btn modal-trigger" href="#modal1">Modal Test Hyperlink</a> 
 
                     <!-- Modal Structure -->
                     <div id="modal1" class="modal">
 
                         <div class="modal-content">
-                            <h4>Modal Header</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sodales augue sed tempus ultricies. Integer id ligula ex. Vestibulum id iaculis nisl, at cursus nisl. Proin at dapibus felis. Nulla varius ultrices suscipit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nisl arcu, bibendum at consequat eu, efficitur ac nisi.</p>
-                        </div>
+                                <div class="container" id="infoFormDiv" style="border: px solid red;">
+                                        <!-- <div class="divider"></div> -->
+                                        <div class="row">
+                                            <form class="col s12 m6 l6 offset-m3 offset-l3" id="addMedicineForm">
+                                                
+                                            <div class="row">
+                                                <div class="input-field">
+                                                    <textarea id="textarea1" class="materialize-textarea"></textarea>
+                                                    <label for="textarea1">Prescription Start Date:</label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="input-field">
+                                                    <textarea id="textarea1" class="materialize-textarea"></textarea>
+                                                    <label for="textarea1">Prescription End Date:</label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="input-field">
+                                                    <textarea id="textarea1" class="materialize-textarea"></textarea>
+                                                    <label for="textarea1">Notes (Dosage / Other):</label>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                
+                             </div>
 
                         <div class="modal-footer">
-                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                            <a href="#!" id="cancel" class="btn modal-close red waves-effect waves-red">Cancel</a>
+                            <a href="#!" id="submit" class="btn modal-close waves-effect waves-green">Submit</a>
                         </div>
 
                     </div>
@@ -133,8 +158,8 @@
     <div class="container z-depth-3" id="searchDiv">
         <form class="s9 m9 l6" id="med-search">
             <div class="input-field grey lighten-4">
-                <input id="medSearch" type="search" required>
-                <label class="label-icon" for="search"><i class="material-icons">search for a medication...</i></label>
+                <input id="medSearch" placeholder="search for a medication..." type="search" required>
+                <label class="label-icon" for="search"><i class="material-icons"></i></label>
                 <i class="material-icons" id="search-icon">X</i>
             </div>
         </form>
@@ -144,54 +169,24 @@
 
 <br>  
 <!--Need to populate the spell checker results-->  
-<section class="container">
+<section class="container z-depth-3">
     <div class="row">
-        <div class="z-depth-3"><p class="center"> IS THIS WHERE THE CORRECT SPELLING WOULD GO?</p>
+        <div><p id="medDisplayName" class="center"></p>
             <ul class="spelling">
 
             </ul>
             <div id="fdaInfo">
                 
             </div>
+            <!-- <a class="right btn modal-trigger" href="#modal1">Add To Medicine Cabinet</a>  -->
+
         </div>
     </div>
 </section>   
 
     <!-- INPUT FORMS FOR PRESCRIPTIONS HERE -- 
     SHOULD ONLY DISPLAY THIS CONTAINER ON CLICK EVENT TO ADD TO MED CAB -->
-    <div class="container" id="infoFormDiv">
-            <div class="divider"></div>
-            <div class="row">
-                <form class="s6 m6 l6" id="addMedicineForm">
-                    <!-- <div class="row">
-                        <div class="input-field">
-                            <textarea id="textarea1" class="materialize-textarea"></textarea>
-                            <label for="textarea1">Medication:</label>
-                        </div> -->
-                    <!-- </div> -->
-                    <p>Add to your Medicine Cabinet:</p>
-                <div class="row">
-                    <div class="input-field">
-                        <textarea id="textarea1" class="materialize-textarea"></textarea>
-                        <label for="textarea1">Prescription Start Date:</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field">
-                        <textarea id="textarea1" class="materialize-textarea"></textarea>
-                        <label for="textarea1">Prescription End Date:</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field">
-                        <textarea id="textarea1" class="materialize-textarea"></textarea>
-                        <label for="textarea1">Notes (Dosage / Other):</label>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-    
+   
 </div>
   
 
