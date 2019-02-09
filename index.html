@@ -84,20 +84,20 @@
                                                 
                                             <div class="row">
                                                 <div class="input-field">
-                                                    <textarea id="textarea1" class="materialize-textarea"></textarea>
-                                                    <label for="textarea1">Prescription Start Date:</label>
+                                                    <input type="text" class="datepicker" id="startDate">
+                                                    <label for="startDate">Prescription Start Date:</label>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="input-field">
-                                                    <textarea id="textarea1" class="materialize-textarea"></textarea>
-                                                    <label for="textarea1">Prescription End Date:</label>
+                                                    <input type="text" class="datepicker" id="endDate">
+                                                    <label for="endDate">Prescription End Date:</label>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="input-field">
-                                                    <textarea id="textarea1" class="materialize-textarea"></textarea>
-                                                    <label for="textarea1">Notes (Dosage / Other):</label>
+                                                    <textarea id="notes" class="materialize-textarea"></textarea>
+                                                    <label for="notes">Notes (Dosage / Other):</label>
                                                 </div>
                                             </div>
                                         </form>
@@ -221,6 +221,7 @@
       $(document).ready(function(){
           //alert("document is ready for jquery...");
           $(".modal").modal();
+          $('.datepicker').datepicker();
       });
 </script>
 
