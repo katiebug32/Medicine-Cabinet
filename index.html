@@ -22,7 +22,50 @@
                     <a href="#" class="brand-logo center" id="headerText"><span class="fas fa-file-prescription"></span>Medicine Cabinet</a>
             </div>
         </nav>
+     <!-- Modal Trigger -->
+    <a class="waves-effect waves-light btn modal-trigger" href="#login-modal">Login/Create An Account</a>
+
+    <!-- Modal Structure -->
+        <div id="login-modal" class="modal">
+            <div class="modal-content">
+                <p> 
+                    <!-- Container for the demo -->
+                    <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
+                      <div class="mdl-card__title mdl-color--light-blue-600 mdl-color-text--white">
+                        <h3 class="mdl-card__title-text"> Create Your Free Medicine Cabinet Today!</h3>
+                      </div>
+                      <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+                        <p>Enter an email and password below and either sign in to an existing account or sign up</p>
+              
+                        <input class="mdl-textfield__input" style="display:inline;width:auto;" type="text" id="email" name="email" placeholder="Email"/>
+                        &nbsp;&nbsp;&nbsp;
+                        <input class="mdl-textfield__input" style="display:inline;width:auto;" type="password" id="password" name="password" placeholder="Password"/>
+                        <br/><br/>
+                        <button disabled class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-sign-in" name="signin">Sign In</button>
+                        &nbsp;&nbsp;&nbsp;
+                        <button class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-sign-up" name="signup">Sign Up</button>
+                        &nbsp;&nbsp;&nbsp;
+                        <button class="mdl-button mdl-js-button mdl-button--raised" disabled id="quickstart-verify-email" name="verify-email">Send Email Verification</button>
+                        &nbsp;&nbsp;&nbsp;
+                        <button class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-password-reset" name="verify-email">Send Password Reset Email</button>
+              
+                        <!-- Container where we'll display the user details -->
+                        <!-- Where we display user's "medicine cabinet" -->
+                        <div class="quickstart-user-details-container">
+                          Firebase sign-in status: <span id="quickstart-sign-in-status">Unknown</span>
+                          <div>Firebase auth <code>currentUser</code> object value:</div>
+                          <pre><code id="quickstart-account-details">null</code></pre>
+                        </div>
+                      </div>
+                    </div> 
+                </p>
+            </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+    </div>
+  </div>
     </header>
+
     <div class="container" id="mainDisplayContainer">
             <div class="divider"></div>
             <div class="section">
@@ -49,7 +92,7 @@
                         </div>
                     </li> 
                 </ul> -->
-            </div>
+            <!-- </div> -->
     <!-- </div> -->
             <!-- <div class="divider"></div>
             <div class="section" id="searchDiv">
@@ -69,21 +112,44 @@
             <div class="section" style="border:0px solid red;">
 
                     <!-- Modal Trigger w/button -->
-                   <!-- <button data-target="modal1" class="btn modal-trigger">Modal Test Button</button> -->
-
-                    <!-- Modal Trigger w/hyperlink -->
-                    <a class="btn modal-trigger" href="#modal1">Modal Test Hyperlink</a> 
+                   <button data-target="modal1" class="btn modal-trigger">Modal Test Button</button>
 
                     <!-- Modal Structure -->
                     <div id="modal1" class="modal">
 
                         <div class="modal-content">
-                            <h4>Modal Header</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sodales augue sed tempus ultricies. Integer id ligula ex. Vestibulum id iaculis nisl, at cursus nisl. Proin at dapibus felis. Nulla varius ultrices suscipit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nisl arcu, bibendum at consequat eu, efficitur ac nisi.</p>
-                        </div>
+                                <div class="container" id="infoFormDiv" style="border: px solid red;">
+                                        <!-- <div class="divider"></div> -->
+                                        <div class="row">
+                                            <form class="col s12 m6 l6 offset-m3 offset-l3" id="addMedicineForm">
+                                                
+                                            <div class="row">
+                                                <div class="input-field">
+                                                    <input type="text" class="datepicker" id="startDate">
+                                                    <label for="startDate">Prescription Start Date:</label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="input-field">
+                                                    <input type="text" class="datepicker" id="endDate">
+                                                    <label for="endDate">Prescription End Date:</label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="input-field">
+                                                    <textarea id="notes" class="materialize-textarea"></textarea>
+                                                    <label for="notes">Notes (Dosage / Other):</label>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                
+                             </div>
 
                         <div class="modal-footer">
-                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                            <a href="#!" id="cancel" class="btn modal-close red waves-effect waves-red">Cancel</a>
+                            <a href="#!" id="submit" class="btn modal-close waves-effect waves-green">Submit</a>
                         </div>
 
                     </div>
@@ -133,8 +199,8 @@
     <div class="container z-depth-3" id="searchDiv">
         <form class="s9 m9 l6" id="med-search">
             <div class="input-field grey lighten-4">
-                <input id="medSearch" type="search" required>
-                <label class="label-icon" for="search"><i class="material-icons">search for a medication...</i></label>
+                <input id="medSearch" placeholder="search for a medication..." type="search" required>
+                <label class="label-icon" for="search"><i class="material-icons"></i></label>
                 <i class="material-icons" id="search-icon">X</i>
             </div>
         </form>
@@ -144,59 +210,26 @@
 
 <br>  
 <!--Need to populate the spell checker results-->  
-<section class="container">
+<section class="container z-depth-3">
     <div class="row">
-        <div class="z-depth-3"><p class="center"> IS THIS WHERE THE CORRECT SPELLING WOULD GO?</p>
+        <div><p id="medDisplayName" class="center"></p>
             <ul class="spelling">
 
             </ul>
             <div id="fdaInfo">
                 
             </div>
+            <!-- <a class="right btn modal-trigger" href="#modal1">Add To Medicine Cabinet</a>  -->
+
         </div>
     </div>
 </section>   
 
     <!-- INPUT FORMS FOR PRESCRIPTIONS HERE -- 
     SHOULD ONLY DISPLAY THIS CONTAINER ON CLICK EVENT TO ADD TO MED CAB -->
-    <div class="container" id="infoFormDiv">
-            <div class="divider"></div>
-            <div class="row">
-                <form class="s6 m6 l6" id="addMedicineForm">
-                    <!-- <div class="row">
-                        <div class="input-field">
-                            <textarea id="textarea1" class="materialize-textarea"></textarea>
-                            <label for="textarea1">Medication:</label>
-                        </div> -->
-                    <!-- </div> -->
-                    <p>Add to your Medicine Cabinet:</p>
-                <div class="row">
-                    <div class="input-field">
-                        <textarea id="textarea1" class="materialize-textarea"></textarea>
-                        <label for="textarea1">Prescription Start Date:</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field">
-                        <textarea id="textarea1" class="materialize-textarea"></textarea>
-                        <label for="textarea1">Prescription End Date:</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field">
-                        <textarea id="textarea1" class="materialize-textarea"></textarea>
-                        <label for="textarea1">Notes (Dosage / Other):</label>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-    
+   
 </div>
   
-
-
-
 
 
     <!--############################################-->
@@ -221,12 +254,229 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="assets/javascript/app.js"></script>
 
+
  <!-- MATERIALIZE MODAL SCRIPT -->
  <script>
       $(document).ready(function(){
           //alert("document is ready for jquery...");
           $(".modal").modal();
+          $('.datepicker').datepicker();
       });
+</script>
+
+
+
+<!--
+// Copyright (c) 2016 Google Inc.
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// Copyright 2019 Andraya Smith, Andrew Esquivel, Katie Robertson, Mike Castillo
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//     http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// -->
+
+ <!-- Import and configure the Firebase SDK -->
+<!-- These scripts are made available when the app is served or deployed on Firebase Hosting -->
+<!-- If you do not serve/host your project using Firebase Hosting see https://firebase.google.com/docs/web/setup -->
+  <script src="/__/firebase/5.7.0/firebase-app.js"></script>
+  <script src="/__/firebase/5.7.0/firebase-auth.js"></script>
+  <script src="/__/firebase/init.js"></script>
+
+
+<script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.0.0/firebase-<PACKAGE>.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAhrusZm6DbU7TAqBlmihARJcTCuF_SOB8",
+    authDomain: "user-login-b11ff.firebaseapp.com",
+    databaseURL: "https://user-login-b11ff.firebaseio.com",
+    projectId: "user-login-b11ff", 
+    storageBucket: "",
+    messagingSenderId: "1072864027129"
+  };
+  firebase.initializeApp(config);
+  var database = firebase.database();
+  </script>
+
+<script type="text/javascript">
+    
+    //  Handles the sign in button press.
+    function toggleSignIn() {
+      if (firebase.auth().currentUser) {
+        // [START signout]
+        firebase.auth().signOut();
+        // [END signout]
+      } else {
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('password').value;
+        if (email.length < 4) {
+          alert('Please enter an email address.');
+          return;
+        }
+        if (password.length < 4) {
+          alert('Please enter a password.');
+          return;
+        }
+        // Sign in with email and pass.
+        // [START authwithemail]
+        firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          // [START_EXCLUDE]
+          if (errorCode === 'auth/wrong-password') {
+            alert('Wrong password.');
+          } else {
+            alert(errorMessage);
+          }
+          console.log(error);
+          document.getElementById('quickstart-sign-in').disabled = false;
+          // [END_EXCLUDE]
+        });
+        // [END authwithemail]
+      }
+      document.getElementById('quickstart-sign-in').disabled = true;
+    }
+    
+    // Handles the sign up button press.
+    
+    function handleSignUp() {
+      var email = document.getElementById('email').value;
+      var password = document.getElementById('password').value;
+    //   user input 
+    // push to database
+   database.ref().push({
+        email: email,
+        password: password,
+        dataAdded: firebase.database.ServerValue.TIMESTAMP
+    });
+      if (email.length < 4) {
+        alert('Please enter an email address.');
+        return;
+      }
+      if (password.length < 4) {
+        alert('Please enter a password.');
+        return;
+      }
+      // Sign in with email and pass.
+      // [START createwithemail]
+      firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // [START_EXCLUDE]
+        if (errorCode == 'auth/weak-password') {
+          alert('The password is too weak.');
+        } else {
+          alert(errorMessage);
+        }
+        console.log(error);
+        // [END_EXCLUDE]
+      });
+      // [END createwithemail]
+    }
+    
+    // Sends an email verification to the user.
+    
+    function sendEmailVerification() {
+      // [START sendemailverification]
+      firebase.auth().currentUser.sendEmailVerification().then(function() {
+        // Email Verification sent!
+        // [START_EXCLUDE]
+        alert('Email Verification Sent!');
+        // [END_EXCLUDE]
+      });
+      // [END sendemailverification]
+    }
+    function sendPasswordReset() {
+      var email = document.getElementById('email').value;
+      // [START sendpasswordemail]
+      firebase.auth().sendPasswordResetEmail(email).then(function() {
+        // Password Reset Email Sent!
+        // [START_EXCLUDE]
+        alert('Password Reset Email Sent!');
+        // [END_EXCLUDE]
+      }).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // [START_EXCLUDE]
+        if (errorCode == 'auth/invalid-email') {
+          alert(errorMessage);
+        } else if (errorCode == 'auth/user-not-found') {
+          alert(errorMessage);
+        }
+        console.log(error);
+        // [END_EXCLUDE]
+      });
+      // [END sendpasswordemail];
+    }
+    /**
+     * initApp handles setting up UI event listeners and registering Firebase auth listeners:
+     *  - firebase.auth().onAuthStateChanged: This listener is called when the user is signed in or
+     *    out, and that is where we update the UI.
+     */
+    function initApp() {
+      // Listening for auth state changes.
+      // [START authstatelistener]
+      firebase.auth().onAuthStateChanged(function(user) {
+        // [START_EXCLUDE silent]
+        document.getElementById('quickstart-verify-email').disabled = true;
+        // [END_EXCLUDE]
+        if (user) {
+          // User is signed in.
+          var displayName = user.displayName;
+          var email = user.email;
+          var emailVerified = user.emailVerified;
+          var photoURL = user.photoURL;
+          var isAnonymous = user.isAnonymous;
+          var uid = user.uid;
+          var providerData = user.providerData;
+          // [START_EXCLUDE]
+          document.getElementById('quickstart-sign-in-status').textContent = 'Signed in';
+          document.getElementById('quickstart-sign-in').textContent = 'Sign out';
+          document.getElementById('quickstart-account-details').textContent = JSON.stringify(user, null, '  ');
+          if (!emailVerified) {
+            document.getElementById('quickstart-verify-email').disabled = false;
+          }
+          // [END_EXCLUDE]
+        } else {
+          // User is signed out.
+          // [START_EXCLUDE]
+          document.getElementById('quickstart-sign-in-status').textContent = 'Signed out';
+          document.getElementById('quickstart-sign-in').textContent = 'Sign in';
+          document.getElementById('quickstart-account-details').textContent = 'null';
+          // [END_EXCLUDE]
+        }
+        // [START_EXCLUDE silent]
+        document.getElementById('quickstart-sign-in').disabled = false;
+        // [END_EXCLUDE]
+      });
+      // [END authstatelistener]
+      document.getElementById('quickstart-sign-in').addEventListener('click', toggleSignIn, false);
+      document.getElementById('quickstart-sign-up').addEventListener('click', handleSignUp, false);
+      document.getElementById('quickstart-verify-email').addEventListener('click', sendEmailVerification, false);
+      document.getElementById('quickstart-password-reset').addEventListener('click', sendPasswordReset, false);
+    }
+    window.onload = function() {
+      initApp();
+    };
+
 </script>
 
 </body>
