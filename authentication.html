@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- Reference Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
+    <style type="text/css">
+        ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+            color: #e5e5e5;
+            opacity: 1; /* Firefox */
+        }
+
+        :-ms-input-placeholder { /* Internet Explorer 10-11 */
+            color: #e5e5e5;
+        }
+
+        ::-ms-input-placeholder { /* Microsoft Edge */
+            color: #e5e5e5;
+        } 
+        .hide 
+        {
+            display: none;
+        }
+        .show
+        {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <input id="txtEmail" type="email" placeholder="test@email.com"><br>
+
+        <input id="txtPassword" type="password" placeholder="password"><br>
+
+        <button id="btnSignup">Sign up</button>
+
+        <button id="btnLogin">Log in</button>
+
+        <button id="btnLogout">Log out</button>
+
+        <h2 id="status"></h2>
+
+        <hr>
+
+        <p><a href="https://console.firebase.google.com/project/login-example-c511b/authentication/users" target="_blank">Firebase Console</a></p>
+       
+    
+    </div>
+
+
+    
+    <script>
+        // Initialize Firebase
+        var config = {
+        apiKey: "AIzaSyDXXzmhF4jk5RQwo92FZMis8aOL0__iRVQ",
+        authDomain: "login-example-c511b.firebaseapp.com",
+        databaseURL: "https://login-example-c511b.firebaseio.com",
+        projectId: "login-example-c511b",
+        storageBucket: "login-example-c511b.appspot.com",
+        messagingSenderId: "406781615002"
+        };
+        firebase.initializeApp(config);
+
+        
+        // ----------------------------------------------------------------------------
+        // 1. GET ELEMENTS INTO DOM
+        const txtEmail = document.getElementById("txtEmail");
+        const txtPassword = document.getElementById("txtPassword");
+        const btnLogin = document.getElementById("btnLogin");
+        const btnSignup = document.getElementById("btnSignup");
+        const btnLogout = document.getElementById("btnLogout");
+        const status = document.getElementById("status");
+
+        // ----------------------------------------------------------------------------
+        // 2. SIGNUP BUTTON EVENT HANDLER
+        btnSignup.addEventListener("click", event => {
+            clearStatus();
+            const email = txtEmail.value;
+            const pass = txtPassword.value;
+            const promise = firebase.auth().createUserWithEmailAndPassword(email, pass);
+            promise.catch(event => {
+                console.log("create user promise error = " + event.message);
+                let message = "Sign up: " + event.message;
+                status.innerHTML = message;
+            });
+            clearInput();
+        });
+        // ----------------------------------------------------------------------------
+        // 3. LOGIN BUTTON EVENT HANDLER
+        btnLogin.addEventListener("click", event => {
+            clearStatus();
+            const email = txtEmail.value; //<-- TO DO: VALIDATE THIS AS LEGIT EMAIL ENTRY
+            const pass = txtPassword.value;
+            const promise = firebase.auth().signInWithEmailAndPassword(email, pass);
+            promise.catch(event => {
+                console.log("sign in promise error = " + event.message);
+                let message = "Log in: " + event.message;
+                status.innerHTML = message;
+            });
+            clearInput();
+            
+        });
+        // ----------------------------------------------------------------------------
+        // 4. LOGOUT BUTTON EVENT HANDLER
+        btnLogout.addEventListener("click", event => {
+            clearStatus();
+            firebase.auth().signOut();
+            clearInput();
+        });
+        // ----------------------------------------------------------------------------
+        // 5. REALTIME DB AUTHORIZATION EVENT HANDLER
+        firebase.auth().onAuthStateChanged(firebaseUser => {
+        
+            if(firebaseUser) {
+                //logged in
+                console.log("firebaseUser = ", firebaseUser);
+                status.innerHTML = "Logged in as: " + firebaseUser.email;
+                btnLogin.setAttribute("class", "hide"); 
+                btnSignup.setAttribute("class", "hide"); 
+                btnLogout.setAttribute("class","show"); 
+                txtEmail.setAttribute("class", "hide");
+                txtPassword.setAttribute("class", "hide");     
+        
+            } else {
+                //not logged in
+                console.log("firebaseUser = " + firebaseUser); //null
+                status.innerHTML = "Logged out";
+                btnLogin.setAttribute("class", "show"); 
+                btnSignup.setAttribute("class", "show"); 
+                btnLogout.setAttribute("class","hide"); 
+                txtEmail.setAttribute("class", "show");
+                txtPassword.setAttribute("class", "show");
+            }
+
+        });
+        // ----------------------------------------------------------------------------
+        // 5. CLEAR SCREEN
+        function clearInput() {
+            txtEmail.value = "";
+            txtPassword.value = "";
+        }
+
+        function clearStatus() {
+            status.innerHTML = "";
+        }
+
+    </script>
+</body>
+</html>
