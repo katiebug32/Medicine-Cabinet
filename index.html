@@ -383,9 +383,11 @@
         var errorMessage = error.message;
         // [START_EXCLUDE]
         if (errorCode == 'auth/weak-password') {
-          alert('The password is too weak.');
+        //   alert('The password is too weak.');
+        $("#message").text("*Password is too weak");
         } else {
-          alert(errorMessage);
+        //   alert(errorMessage);
+        $("#message").text(errorMessage);
         }
         console.log(error);
         // [END_EXCLUDE]
@@ -400,7 +402,8 @@
       firebase.auth().currentUser.sendEmailVerification().then(function() {
         // Email Verification sent!
         // [START_EXCLUDE]
-        alert('Email Verification Sent!');
+        // alert('Email Verification Sent!');
+        $("#message").text("*Email Verification Sent");
         // [END_EXCLUDE]
       });
       // [END sendemailverification]
