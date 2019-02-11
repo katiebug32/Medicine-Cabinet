@@ -48,10 +48,11 @@
                         <button class="mdl-button mdl-js-button mdl-button--raised" disabled id="quickstart-verify-email" name="verify-email">Send Email Verification</button>
                         &nbsp;&nbsp;&nbsp;
                         <button class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-password-reset" name="verify-email">Send Password Reset Email</button>
-              
+                    
                         <!-- Container where we'll display the user details -->
                         <!-- Where we display user's "medicine cabinet" -->
                         <div class="quickstart-user-details-container">
+                        <div id="message"></div>
                           Firebase sign-in status: <span id="quickstart-sign-in-status">Unknown</span>
                           <div>Firebase auth <code>currentUser</code> object value:</div>
                           <pre><code id="quickstart-account-details">null</code></pre>
@@ -325,11 +326,12 @@
         var email = document.getElementById('email').value;
         var password = document.getElementById('password').value;
         if (email.length < 4) {
-          alert('Please enter an email address.');
+        //   alert('Please enter an email address.');
+        $("#message").text("*Please enter an email address");
           return;
         }
         if (password.length < 4) {
-          alert('Please enter a password.');
+        $("#message").text("*Please enter a password");
           return;
         }
         // Sign in with email and pass.
@@ -340,9 +342,9 @@
           var errorMessage = error.message;
           // [START_EXCLUDE]
           if (errorCode === 'auth/wrong-password') {
-            alert('Wrong password.');
+            $("#message").text("*Wrong Password");
           } else {
-            alert(errorMessage);
+            $("#message").text(errorMessage);
           }
           console.log(error);
           document.getElementById('quickstart-sign-in').disabled = false;
@@ -366,11 +368,11 @@
         dataAdded: firebase.database.ServerValue.TIMESTAMP
     });
       if (email.length < 4) {
-        alert('Please enter an email address.');
+        $("#message").text("*Please enter an email address");
         return;
       }
       if (password.length < 4) {
-        alert('Please enter a password.');
+        $("#message").text("*Please enter a password");
         return;
       }
       // Sign in with email and pass.
@@ -410,6 +412,7 @@
         // Password Reset Email Sent!
         // [START_EXCLUDE]
         alert('Password Reset Email Sent!');
+        $("#message").text("*Password Reset Email Sent!");
         // [END_EXCLUDE]
       }).catch(function(error) {
         // Handle Errors here.
@@ -417,9 +420,10 @@
         var errorMessage = error.message;
         // [START_EXCLUDE]
         if (errorCode == 'auth/invalid-email') {
-          alert(errorMessage);
+            $("#message").text(errorMessage);
         } else if (errorCode == 'auth/user-not-found') {
-          alert(errorMessage);
+        //   alert(errorMessage);
+          $("#message").text(errorMessage);
         }
         console.log(error);
         // [END_EXCLUDE]

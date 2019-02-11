@@ -27,6 +27,12 @@ li.med-li.btn.col.s6 {
     width: 47%;
 }
 
+#message {
+    font-display: 600;
+    font-size: 20px;
+    color: red;
+}
+
 @media screen and (max-width: 542px){
     #headerText {
         font-size: 1.5rem;
