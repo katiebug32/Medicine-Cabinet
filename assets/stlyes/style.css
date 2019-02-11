@@ -1,47 +1,35 @@
-.nav-wrapper {
-    margin: .2rem;
+.nav-wrapper{
+    background-color: rgb(3, 155, 229);
+}
+.chem-spell{
+    min-height: 200px;
+}
+footer{
+    height: 60px;
 }
 
-body {
-    margin-bottom: 50px; 
-    padding-bottom: 50px;
-}
-
-.fas {
-    margin-right: 1rem;
-}
-
-.btn-small {
-    margin-top: 10px;
-}
-
-/* .section {
-    margin: .5rem 10%;
-} */
-
-#fdaInfo {
-    margin: 10px;
-}
-
-#infoFormDiv {
-    margin-bottom: 5rem;
-}
-
-
-footer {
-    position:fixed;
-    bottom:0;
-    width: 100%;
-}
-li.med-li.btn.col.s6 {
+li.med-li.btn.light-blue.col.s12.l6 {
     margin: 5px;
 }
-.row .col.s6 {
-    width: 47%;
+i#search-icon {
+    top: 10px;
+    color: unset;
+   
+}
+#medSearch{
+    border: 1px solid #9e9e9e;
+    padding-left: 10px;
 }
 
-@media screen and (max-width: 542px){
-    #headerText {
-        font-size: 1.5rem;
+@media only screen and (min-width: 993px){
+.row .col.l6 {
+    width: 48%;
+}
+}
+@media only screen and (max-width: 640px){
+    nav .brand-logo {
+        
+        font-size: 1em;
+    
     }
 }
