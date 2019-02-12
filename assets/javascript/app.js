@@ -227,7 +227,7 @@ $("#submit").on("click", function(event) {
 function medSpellingList(words) {
   let ul = $('.spelling')
 
-  let li = $('<li>', { 'class': 'med-li btn col s6 z-depth-1', 'data-name': words })
+  let li = $('<li>', { 'class': 'med-li btn light-blue col s12 l6', 'data-name': words })
   ul.append(li.text(words))
 
   console.log(words + " in the medSpellingList");//<---checking to see if i am in this function

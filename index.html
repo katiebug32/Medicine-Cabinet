@@ -5,190 +5,156 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>My Medicine Cabinet</title>
-    <meta name="description" content="You choose what goes in your cabinet. We utilze multiple APIs to get the information you need." />
+    <meta name="description"
+        content="You choose what goes in your cabinet. We utilze multiple APIs to get the information you need." />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="assets/stlyes/style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/stlyes/style.css" />
+
 
 </head>
 
 <body>
+
     <header>
         <nav>
             <div class="nav-wrapper">
-                    <a href="#" class="brand-logo center" id="headerText"><span class="fas fa-file-prescription"></span>Medicine Cabinet</a>
+                <span class="brand-logo center " id="headerText">
+                    <span class="fas fa-file-prescription"></span> My Medicine Cabinet</span>
             </div>
         </nav>
     </header>
+
     <div class="container" id="mainDisplayContainer">
-            <div class="divider"></div>
-            <div class="section">
 
-        <!-- ////////Need to add following code to .js file!
-        document.addEventListener('DOMContentLoaded', function() {
-            var elems = document.querySelectorAll('.collapsible');
-            var instances = M.Collapsible.init(elems, options);
-          });
-        
-          // Or with jQuery
-        
-          $(document).ready(function(){
-            $('.collapsible').collapsible();
-          });
-        //////////////         --> 
-                <!-- <ul class="collapsible">
-                    <li>
-                        <div class="collapsible-header">Welcome to the Medicine Cabinet</div>
-                        <div class="collapsible-body">
-                            <p>You can use this application to:</p>
-                            <li>- Get information about prescription or over-the-counter (OTC) medications.</li>
-                            <li>- Store information about your favorite medications or current prescriptions for quick reference.</li>
-                        </div>
-                    </li> 
-                </ul> -->
-            </div>
-    <!-- </div> -->
-            <!-- <div class="divider"></div>
-            <div class="section" id="searchDiv">
-                <div class="nav-wrapper">
-                    <form class="s6 m6 l6">
+        <!-- MATERIALIZE MODAL POPUP EXAMPLE -->
+        <div class="section">
+            <!-- SEARCH FOR MEDICATIONS HERE -->
+            <div class="container " id="searchDiv">
+                <form class="s9 m9 l6" id="med-search">
+                    <label class="label-icon" for="search">Search Medications</label>
                     <div class="input-field">
-                        <input id="search" type="search" required>
-                        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                        <i class="material-icons">X</i>
+                        <input id="medSearch" placeholder="e.g. Tylenol" type="search" required>
+                        <i class="material-icons" id="search-icon">search</i>
                     </div>
-                    </form>
-                </div>
-                <div class="divider"></div>
-            </div> -->
+                </form>
+            </div>
 
-            <!-- MATERIALIZE MODAL POPUP EXAMPLE -->
-            <div class="section" style="border:0px solid red;">
 
-                    <!-- Modal Trigger w/button -->
-                   <!-- <button data-target="modal1" class="btn modal-trigger">Modal Test Button</button> -->
 
-                    <!-- Modal Trigger w/hyperlink -->
+            <!-- Modal Structure -->
+            <div id="modal1" class="modal">
 
-                    <!-- Modal Structure -->
-                    <div id="modal1" class="modal">
+                <div class="modal-content">
 
-                        <div class="modal-content">
-                                <div class="container" id="infoFormDiv" style="border: px solid red;">
-                                        <!-- <div class="divider"></div> -->
-                                        <div class="row">
-                                            <form class="col s12 m6 l6 offset-m3 offset-l3" id="addMedicineForm">
-                                                
-                                            <div class="row">
-                                                <div class="input-field">
-                                                    <input type="text" class="datepicker" id="startDate">
-                                                    <label for="startDate">Prescription Start Date:</label>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="input-field">
-                                                    <input type="text" class="datepicker" id="endDate">
-                                                    <label for="endDate">Prescription End Date:</label>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="input-field">
-                                                    <textarea id="notes" class="materialize-textarea"></textarea>
-                                                    <label for="notes">Notes (Dosage / Other):</label>
-                                                </div>
-                                            </div>
-                                        </form>
+                    <div class="container" id="infoFormDiv">
+                        <div class="row">
+                            <form class="col s12 m6 l6 offset-m3 offset-l3" id="addMedicineForm">
+
+                                <div class="row">
+                                    <div class="input-field">
+                                        <input type="text" class="datepicker" id="startDate">
+                                        <label for="startDate">Prescription Start Date:</label>
                                     </div>
                                 </div>
-                                
-                             </div>
-
-                        <div class="modal-footer">
-                            <a href="#!" id="cancel" class="btn modal-close red waves-effect waves-red">Cancel</a>
-                            <a href="#!" id="submit" class="btn modal-close waves-effect waves-green">Submit</a>
+                                <div class="row">
+                                    <div class="input-field">
+                                        <input type="text" class="datepicker" id="endDate">
+                                        <label for="endDate">Prescription End Date:</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field">
+                                        <textarea id="notes" class="materialize-textarea"></textarea>
+                                        <label for="notes">Notes (Dosage / Other):</label>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <a href="#!" id="cancel" class="btn modal-close red waves-effect waves-red">Cancel</a>
+                    <a href="#!" id="submit" class="btn modal-close waves-effect waves-green">Submit</a>
+                </div>
+
+            </div>
+
+        </div>
+
+        <section class="container chem-spell">
+            <div class="row">
+                <div>
+                    <p id="medDisplayName" class="center">Welcome to your Medicine Cabinet. Search for medications you
+                        plan on taking and create a schedule. You can also review FDA information on your medications.
+                        Start searching!</p>
+                    <ul class="spelling">
+
+                    </ul>
+                    <div id="fdaInfo">
 
                     </div>
 
+                </div>
             </div>
-
-
-     <!-- DISPLAYS THE FIREBASE DATA / USER INPUT -->
-        <div id="medicationTableDiv"> 
-        <div class="divider"></div>
-            <table class="striped responsive-table z-depth-3">
-            <thead>
-                <tr>
-                    <th>Medication: </th>
-                    <th>Prescription Started:</th>
-                    <th>Prescription Ending:</th>
-                    <th>Dosage / Notes: </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Azithromycin</td>
-                    <td>02/01/19</td>
-                    <td>02/06/19</td>
-                    <td>Take 2x daily with food</td>
-                </tr>
-                <tr>
-                    <td>Lipitor</td>
-                    <td>01/01/18</td>
-                    <td>01/01/50</td>
-                    <td>1x daily PM</td>
-                </tr>
-                <tr>
-                    <td>AMOXICILLIN</td>
-                    <td>02/10/19</td>
-                    <td>02/24/19</td>
-                    <td>Take 2x daily with food</td>
-                </tr>
-            </tbody>
+        </section>
+        <!-- DISPLAYS THE FIREBASE DATA / USER INPUT -->
+        <div id="medicationTableDiv">
+            <table class="striped responsive-table">
+                <thead>
+                    <tr>
+                        <th>Medication: </th>
+                        <th>Prescription Started:</th>
+                        <th>Prescription Ending:</th>
+                        <th>Dosage / Notes: </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Azithromycin</td>
+                        <td>02/01/19</td>
+                        <td>02/06/19</td>
+                        <td>Take 2x daily with food</td>
+                    </tr>
+                    <tr>
+                        <td>Lipitor</td>
+                        <td>01/01/18</td>
+                        <td>01/01/50</td>
+                        <td>1x daily PM</td>
+                    </tr>
+                    <tr>
+                        <td>AMOXICILLIN</td>
+                        <td>02/10/19</td>
+                        <td>02/24/19</td>
+                        <td>Take 2x daily with food</td>
+                    </tr>
+                </tbody>
             </table>
         </div>
-        <div class="divider"></div> 
         <br>
     </div>
-    
-    <!-- SEARCH FOR MEDICATIONS HERE -->
-    <div class="container z-depth-3" id="searchDiv">
-        <form class="s9 m9 l6" id="med-search">
-            <div class="input-field grey lighten-4">
-                <input id="medSearch" placeholder="search for a medication..." type="search" required>
-                <label class="label-icon" for="search"><i class="material-icons"></i></label>
-                <i class="material-icons" id="search-icon">X</i>
-            </div>
-        </form>
+
+
+
     </div>
-   
-</div>
 
-<br>  
-<!--Need to populate the spell checker results-->  
-<section class="container z-depth-3">
-    <div class="row">
-        <div><p id="medDisplayName" class="center"></p>
-            <ul class="spelling">
+    <br>
+    <!--Need to populate the spell checker results-->
 
-            </ul>
-            <div id="fdaInfo">
-                
-            </div>
-            <!-- <a class="right btn modal-trigger" href="#modal1">Add To Medicine Cabinet</a>  -->
 
-        </div>
-    </div>
-</section>   
-
-    <!-- INPUT FORMS FOR PRESCRIPTIONS HERE -- 
+    <!-- INPUT FORMS FOR PRESCRIPTIONS HERE
     SHOULD ONLY DISPLAY THIS CONTAINER ON CLICK EVENT TO ADD TO MED CAB -->
-   
-</div>
-  
+
+    </div>
+
+
 
 
 
@@ -198,32 +164,23 @@
     <!--The footer with our git hub links :) -->
     <!--############################################-->
 
-<footer class="page-footer">
-    <div class="footer-copyright">
-            <div class="container">
-            © 2019 Team Baratheon
-            <a class="grey-text text-lighten-4 right" href="#!"></a>
-            </div>
-    </div>
-</footer>
+    <footer class="center page-footer grey footer-copyright">
+        © 2019 Team Baratheon
 
-<!-- this is a duplicate reference to jquery!!! 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
-<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
-<script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
-<!-- moved materialize down so it loads AFTER jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script src="assets/javascript/app.js"></script>
+    </footer>
 
- <!-- MATERIALIZE MODAL SCRIPT -->
- <script>
-      $(document).ready(function(){
-          //alert("document is ready for jquery...");
-          $(".modal").modal();
-          $('.datepicker').datepicker();
-      });
-</script>
+
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="assets/javascript/app.js"></script>
+
+    <!-- MATERIALIZE MODAL SCRIPT -->
+    <script>
+        $(document).ready(function () {
+            $(".modal").modal();
+            $('.datepicker').datepicker();
+        });
+    </script>
 
 </body>
 
