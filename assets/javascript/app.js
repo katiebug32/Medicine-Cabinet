@@ -45,7 +45,7 @@ function spellChecker(med) {
   }).then(function (res) {
 
     console.log("This is the response form chemSpell: ", res)//<---checking info from API
-
+  
     //TODO: Turn our response into an array and split it from the '"'
     spell = res.split('"');
     console.log(spell);
@@ -67,6 +67,7 @@ function spellChecker(med) {
   });
 };
 
+var flag = false;
 //  FDA API 
 //TODO: When user selects the correct spelling, i should send the value into the FDA functoin
 function FDA(med) {
@@ -74,44 +75,44 @@ function FDA(med) {
   let FDAQuery = "https://api.fda.gov/drug/label.json?search=" + med; //Will need a variable in place
   $.ajax({
     url: FDAQuery,
-    method: "GET"
+    method: "GET",
+    error: function(){
+      spellChecker(med);
+    }
   }).then(function (res) {
+    console.log(res);
+    $(".spelling").empty();
+      console.log("This is the full response from FDA: ", res);//<---checking info from API
+      //assign the data to global variable. to be able to display on dom without saveing to database
+      console.log(res.results[0]);
+      $("#medDisplayName").text(med.toUpperCase()).attr("class", "flow-text center");
+      if (res.results[0].hasOwnProperty("indications_and_usage")) {
+        response = res.results[0].indications_and_usage;
+        $("<p>").appendTo('#fdaInfo').text("Indications and Usage: " + response);
+        flag = true;
+      }
+      if (res.results[0].hasOwnProperty("general_precautions")) {
+        response = res.results[0].general_precautions;
+        $("<p>").appendTo('#fdaInfo').text("General Precautions: " + response);
+        flag = true;
+      }
+      if (res.results[0].hasOwnProperty("warnings")) {
+        response = res.results[0].warnings;
+        $("<p>").appendTo('#fdaInfo').text("Warnings: " + response);
+        flag = true;
+      }
+      if (res.results[0].hasOwnProperty("boxed_warning")) {
+        response = res.results[0].boxed_warning[0];
+        $("<p>").appendTo('#fdaInfo').text("Warnings: " + response);
+        flag = true;
+      }
+      if (flag === false) {
+        $('#fdaInfo').text("No Information Currently Available");
+        // addModalTrigger();
+      }
+      addModalTrigger();
+    });
 
-    console.log("This is the full response from FDA: ", res);//<---checking info from API
-    //assign the data to global variable. to be able to display on dom without saveing to database
-    console.log(res.results[0]);
-    $("#medDisplayName").text(med).attr("class", "flow-text center");
-    if (res.results[0].hasOwnProperty("indications_and_usage")) {
-      response = res.results[0].indications_and_usage;
-      $('#fdaInfo').text("Indications and Usage: " + response);
-      addModalTrigger();
-      return;
-    }
-    else if (res.results[0].hasOwnProperty("general_precautions")) {
-      response = res.results[0].general_precautions;
-      $('#fdaInfo').text("General Precautions: " + response);
-      addModalTrigger();
-      return;
-    }
-    else if (res.results[0].hasOwnProperty("warnings")) {
-      response = res.results[0].warnings;
-      $('#fdaInfo').text("Warnings: " + response);
-      addModalTrigger();
-      return;
-    }
-    else if (res.results[0].hasOwnProperty("boxed_warning")) {
-      response = res.results[0].boxed_warning[0];
-      $('#fdaInfo').text("Warnings: " + response);
-      addModalTrigger();
-      return;
-    }
-    else {
-      $('#fdaInfo').text("No Information Currently Available");
-      addModalTrigger();
-    }
-    // response = res;
-    // $('#fdaInfo').text(response);
-  });
 };
 //#############################################################################################
 // End of API/AJAX queries
@@ -188,20 +189,20 @@ function renderMedTable(snapshot) {
 
 
 //TODO: ENTER will be the search for the med. i dont see a submit button
-$('#med-search').submit(e => {
+$('#med-search').submit(function(e) {
   e.preventDefault();
-
 
   let med = document.getElementById("medSearch").value
 
   console.log('This is your meds ' + med)
+  $('.spelling').empty();
   $('#fdaInfo').empty();
   $('#medDisplayName').empty();
 
-  //pass med to the spell checker
-  spellChecker(med);
+  //pass med to the FDA , then possibly spell checker
+  FDA(med);
 
-  //reset serach form
+  //reset search form
   document.getElementById("med-search").reset();
 })
 
@@ -221,6 +222,8 @@ $("#submit").on("click", function(event) {
   let notes = $('#notes').val();
   console.log(med, startDate, endDate, notes);
   addMed(med, startDate, endDate, notes);
+  $('#content').empty();
+
 })
 
 //TODO: Create list items as they words are passed through from the spellchecker
