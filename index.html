@@ -53,9 +53,9 @@
                         <!-- Where we display user's "medicine cabinet" -->
                         <div class="quickstart-user-details-container">
                         <div id="message"></div>
-                          Firebase sign-in status: <span id="quickstart-sign-in-status">Unknown</span>
-                          <div>Firebase auth <code>currentUser</code> object value:</div>
-                          <pre><code id="quickstart-account-details">null</code></pre>
+                          Sign-in status: <span id="quickstart-sign-in-status"></span>
+                          <div><code></code></div>
+                          <pre><code id="quickstart-account-details"></code></pre>
                         </div>
                       </div>
                     </div> 
@@ -113,7 +113,13 @@
             <div class="section" style="border:0px solid red;">
 
                     <!-- Modal Trigger w/button -->
+
                    <button data-target="modal1" class="btn modal-trigger">Modal Test Button</button>
+
+                   <!-- <button data-target="modal1" class="btn modal-trigger">Modal Test Button</button> -->
+
+                    <!-- Modal Trigger w/hyperlink -->
+
 
                     <!-- Modal Structure -->
                     <div id="modal1" class="modal">
@@ -310,6 +316,7 @@
     storageBucket: "",
     messagingSenderId: "1072864027129"
   };
+
   firebase.initializeApp(config);
   var database = firebase.database();
   </script>
@@ -362,7 +369,7 @@
       var password = document.getElementById('password').value;
     //   user input 
     // push to database
-   database.ref().push({
+   database.ref().set({
         email: email,
         password: password,
         dataAdded: firebase.database.ServerValue.TIMESTAMP

@@ -1,14 +1,27 @@
 .nav-wrapper {
     margin: .2rem;
 }
+
+body {
+    margin-bottom: 50px; 
+    padding-bottom: 50px;
+}
+
 .fas {
-   
     margin-right: 1rem;
+}
+
+.btn-small {
+    margin-top: 10px;
 }
 
 /* .section {
     margin: .5rem 10%;
 } */
+
+#fdaInfo {
+    margin: 10px;
+}
 
 #infoFormDiv {
     margin-bottom: 5rem;
