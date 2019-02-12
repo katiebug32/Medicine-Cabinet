@@ -39,8 +39,10 @@
                 <form class="s9 m9 l6" id="med-search">
                     <label class="label-icon" for="search">Search Medications</label>
                     <div class="input-field">
-                        <input id="medSearch" placeholder="e.g. Tylenol" type="search" required>
+                        <button type="submit" id="search-btn">
                         <i class="material-icons" id="search-icon">search</i>
+                    </button>
+                        <input id="medSearch" placeholder="e.g. Tylenol" type="search" required>
                     </div>
                 </form>
             </div>
@@ -54,17 +56,17 @@
 
                     <div class="container" id="infoFormDiv">
                         <div class="row">
-                            <form class="col s12 m6 l6 offset-m3 offset-l3" id="addMedicineForm">
+                            <form class="col s12 " id="addMedicineForm">
 
                                 <div class="row">
                                     <div class="input-field">
-                                        <input type="text" class="datepicker" id="startDate">
+                                        <input type="text" class="datepicker" id="startDate" required>
                                         <label for="startDate">Prescription Start Date:</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field">
-                                        <input type="text" class="datepicker" id="endDate">
+                                        <input type="text" class="datepicker" id="endDate" required>
                                         <label for="endDate">Prescription End Date:</label>
                                     </div>
                                 </div>
@@ -91,7 +93,7 @@
 
         <section class="container chem-spell">
             <div class="row">
-                <div>
+                <div id="content">
                     <p id="medDisplayName" class="center">Welcome to your Medicine Cabinet. Search for medications you
                         plan on taking and create a schedule. You can also review FDA information on your medications.
                         Start searching!</p>
