@@ -30,7 +30,7 @@ let response;//vairiable to llow us to play with FDA api response
 // Start of API/AJAX queries
 //#############################################################################################
 //Spellcheck API
-//TODO: Run the user input from through this function 
+//Run the user input from through this function 
 function spellChecker(med) {
   //Empty variable will be use to store array
   var spell;
@@ -46,15 +46,15 @@ $("#medDisplayName").append('<div class="progress"><div class="indeterminate"></
 
     console.log("This is the response form chemSpell: ", res)//<---checking info from API
   
-    //TODO: Turn our response into an array and split it from the '"'
+    //Turn our response into an array and split it from the '"'
     spell = res.split('"');
     console.log(spell);
 
-    //TODO: review all of our elements with a loop
+    //review all of our elements with a loop
     for (let i = 0; i < spell.length; i++) {
       //Capture our elements
       const el = spell[i];
-      //TODO: This if will check first character of the elements in the array and check against user input first letter.
+      //This if will check first character of the elements in the array and check against user input first letter.
       if (el.charAt(0) == med.charAt(0).toUpperCase()) {
 
         console.log("Elements from array that match the chacrater: ", el);
@@ -70,7 +70,7 @@ $("#medDisplayName").append('<div class="progress"><div class="indeterminate"></
 
 var flag = false;
 //  FDA API 
-//TODO: When user selects the correct spelling, i should send the value into the FDA functoin
+//When user selects the correct spelling, send the value into the FDA functoin
 function FDA(med) {
   //Query for FDA API.
   let FDAQuery = "https://api.fda.gov/drug/label.json?search=" + med; //Will need a variable in place
@@ -107,10 +107,9 @@ function FDA(med) {
         $("<p>").appendTo('#fdaInfo').text("Warnings: " + response);
         flag = true;
       }
-      if (flag === false) {
+      if (flag === false) { //if none of the above properties are available for any particular med, this will be final case
         $('#fdaInfo').text("No Information Currently Available");
-        // addModalTrigger();
-      }
+      };
       addModalTrigger();
     });
 
@@ -125,10 +124,7 @@ function FDA(med) {
 // start Functions to manipulate the database
 //#############################################################################################
 
-//TODO: The addME function needs to be part of an (addButton).on.('click',
-//med  =  'this' data attribute on a button
-//removeMed(med)
-//}
+
 function addModalTrigger() {
   $("#fdaInfo").append('<a class="right btn-small modal-trigger" href="#modal1">Add To Medicine Cabinet</a>')
 }
@@ -148,10 +144,6 @@ function addMed(med, startDate, endDate, notes) {
   });
 };
 
-//TODO: The removeMed function needs to be part of an (removeButton).on.('click',
-//med  =  'this' data attribute on a button
-//removeMed(med)
-//}
 function removeMed(med) {
   //Target your specific medication with med variable
   medDB = dbRef.ref('med/' + med);
@@ -189,7 +181,7 @@ function renderMedTable(snapshot) {
 //#############################################################################################
 
 
-//TODO: ENTER will be the search for the med. i dont see a submit button
+//ENTER will be the search for the med. i dont see a submit button
 $('#med-search').submit(function(e) {
   e.preventDefault();
 
@@ -215,6 +207,7 @@ $(".spelling").on("click", ".med-li", function () {
   FDA(med);
 })
 
+//when user wants to add medication to the table, gather additional data:
 $("#submit").on("click", function(event) {
   event.preventDefault();
   let med = $("#medDisplayName").text().trim();
@@ -231,7 +224,7 @@ $("#submit").on("click", function(event) {
 
 })
 
-//TODO: Create list items as they words are passed through from the spellchecker
+//Create list items as they words are passed through from the spellchecker
 function medSpellingList(words) {
   let ul = $('.spelling')
 
