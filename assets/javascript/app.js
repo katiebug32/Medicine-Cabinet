@@ -37,7 +37,7 @@ function spellChecker(med) {
 
   //Query for spell checker API.
   let spellQuery = "https://cors-anywhere.herokuapp.com/https://chemspell.nlm.nih.gov/spell/restspell/restSpell/getQuery4JSON?query=" + med
-
+$("#medDisplayName").append('<div class="progress"><div class="indeterminate"></div></div>')
   //AJAX call for API
   $.ajax({
     url: spellQuery,
@@ -61,6 +61,7 @@ function spellChecker(med) {
 
         //TODO: Will need to pass this result  into a button or list creater function 
         //to populate DOM with correct spelling for user to select 
+         $("#medDisplayName").empty()
         medSpellingList(el)
       };
     };
@@ -221,8 +222,12 @@ $("#submit").on("click", function(event) {
   let endDate = $('#endDate').val();
   let notes = $('#notes').val();
   console.log(med, startDate, endDate, notes);
+  $('.spelling').empty();
+  $('#fdaInfo').empty();
+  $('#medDisplayName').empty();
+  $('#medDisplayName').append('<p>Add another medication.</p>');
   addMed(med, startDate, endDate, notes);
-  $('#content').empty();
+
 
 })
 
